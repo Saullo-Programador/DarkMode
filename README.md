@@ -32,8 +32,8 @@ Este projeto demonstra uma aplicação Android moderna, desenvolvida com Kotlin 
 
 ## Demonstração
 
-<img src="https://github.com/user-attachments/assets/ca9b3845-4aca-43bf-a413-581aeb4fa7a9" width="220px" />
-<img src="https://github.com/user-attachments/assets/57b916f2-581f-4bfb-95bd-b80ac231a5c5" width="220px" />
-<img src="https://github.com/user-attachments/assets/a4bf6227-897b-4acd-91db-1e2b19a85f38" width="220px" />
-<img src="https://github.com/user-attachments/assets/b7767670-2c8a-48ca-a5de-c0f106879d73" width="220px" />
+<img src="https://github.com/user-attachments/assets/ca9b3845-4aca-43bf-a413-581aeb4fa7a9" width="190px" />
+<img src="https://github.com/user-attachments/assets/57b916f2-581f-4bfb-95bd-b80ac231a5c5" width="190px" />
+<img src="https://github.com/user-attachments/assets/a4bf6227-897b-4acd-91db-1e2b19a85f38" width="190px" />
+<img src="https://github.com/user-attachments/assets/b7767670-2c8a-48ca-a5de-c0f106879d73" width="190px" />
 
