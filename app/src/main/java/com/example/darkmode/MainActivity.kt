@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -42,6 +43,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val userViewModel: DataStoreViewModel = hiltViewModel()
             val isDarkMode by userViewModel.isDarkMode.collectAsState( initial = false )
+            var showBottomSheet by remember { mutableStateOf(false) }
             DarkModeTheme (
                 dynamicColor = false,
                 darkTheme = isDarkMode
@@ -53,7 +55,9 @@ class MainActivity : ComponentActivity() {
                 ){
                     AppScreen(
                         isDarkMode = isDarkMode,
-                        onDarkModeChange = { userViewModel.setDarkMode(it)}
+                        onDarkModeChange = { userViewModel.setDarkMode(it) },
+                        showBottomSheet = showBottomSheet,
+                        onToggleBottomSheet = { showBottomSheet = !showBottomSheet }
                     )
                 }
             }
@@ -64,9 +68,10 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AppScreen(
     isDarkMode: Boolean,
+    showBottomSheet: Boolean,
+    onToggleBottomSheet: () -> Unit,
     onDarkModeChange: (Boolean) -> Unit
 ){
-    var showBottomSheet by remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -82,7 +87,7 @@ fun AppScreen(
                 text = "Aparência"
             )
             TextButton(
-                onClick = { showBottomSheet = !showBottomSheet }
+                onClick = onToggleBottomSheet
             ) {
                 Text(
                     color = Color.Blue,
@@ -92,15 +97,9 @@ fun AppScreen(
         }
         if(showBottomSheet){
             BottomSheet(
-                showBottomSheet = {
-                    showBottomSheet = !showBottomSheet
-                },
-                isDarkMode = {
-                    onDarkModeChange(true)
-                },
-                isLightMode = {
-                    onDarkModeChange(false)
-                },
+                showBottomSheet = onToggleBottomSheet,
+                isDarkMode = { onDarkModeChange(true) },
+                isLightMode = { onDarkModeChange(false) },
                 isDarkModeActive = isDarkMode
             )
         }
